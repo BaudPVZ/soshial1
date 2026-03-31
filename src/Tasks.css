@@ -1,0 +1,267 @@
+/* ===== GAME STYLE – TASKS FEED ===== */
+/* Ярко, стильно, как в любимой RPG! */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Карточка задания – словно карточка квеста в инвентаре */
+.task {
+  display: grid;
+  grid-template-areas:
+    "content content"
+    "exp buttons";
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 16px 20px;
+
+  max-width: 700px;
+  margin: 0 auto 24px;
+  padding: 24px;
+
+  /* Футуристичный градиент – космос/энергия */
+  background: linear-gradient(145deg, #1a1e2c, #0f1219);
+  border: 2px solid transparent;
+  border-radius: 28px;
+  position: relative;
+  color: #fff;
+  font-family:
+    "Poppins",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+  box-shadow:
+    0 12px 0 #0b0d12,
+    0 0 0 2px #3e4a7a inset,
+    0 0 20px rgba(0, 255, 255, 0.3);
+  transition: all 0.1s ease-out;
+}
+
+/* Эффект неоновой рамки при наведении */
+.task:hover {
+  border-color: #00f7ff;
+  box-shadow:
+    0 14px 0 #07090e,
+    0 0 0 3px cyan inset,
+    0 0 30px cyan;
+  transform: translateY(-2px);
+}
+
+/* Контентная область – подсветка текста */
+.task-content {
+  grid-area: content;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-shadow: 2px 2px 0 #0a0c10;
+}
+
+/* Название – как легендарный предмет */
+.task-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.2;
+  background: linear-gradient(135deg, #ffe77a, #ffb347);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow:
+    0 0 8px #ffb347,
+    0 0 20px #ff8c00;
+  letter-spacing: 1px;
+  word-break: break-word;
+  margin: 0;
+}
+
+/* Описание – мягкое свечение */
+.task-description {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: #cbd5f0;
+  text-shadow: 0 0 6px rgba(0, 200, 255, 0.4);
+  word-break: break-word;
+  margin: 0;
+}
+
+/* Опыт – XP-бейдж с иконкой */
+.task-exp {
+  grid-area: exp;
+  justify-self: start;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  background: linear-gradient(145deg, #2a2e45, #1e212e);
+  border-radius: 40px;
+  border: 2px solid #9c89ff;
+  color: #f0e6ff;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  box-shadow:
+    0 6px 0 #0e0c1a,
+    0 0 12px #b794f4;
+  margin: 0;
+}
+
+/* Псевдо-иконка опыта – звёздочка */
+.task-exp::before {
+  content: "✦";
+  font-size: 1.3rem;
+  color: #ffd966;
+  text-shadow: 0 0 8px gold;
+  line-height: 1;
+}
+
+/* Контейнер кнопок – всегда справа */
+.task-buttons {
+  grid-area: buttons;
+  display: flex;
+  gap: 16px;
+  justify-content: flex-end;
+}
+
+/* Базовый стиль кнопок – «игровые» */
+.task-get,
+.task-pass {
+  padding: 12px 28px;
+  border: none;
+  border-radius: 60px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  font-family: inherit;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: 0.08s linear;
+  position: relative;
+  box-shadow:
+    0 10px 0 rgba(0, 0, 0, 0.2),
+    0 0 15px currentColor;
+}
+
+/* Кнопка «Получить» – легендарная зелёная */
+.task-get {
+  background: linear-gradient(145deg, #32cd32, #228b22);
+  color: #fff;
+  text-shadow: 0 2px 0 #0f4f0f;
+  border: 2px solid #adff2f;
+  box-shadow:
+    0 10px 0 #0b3b0b,
+    0 0 20px #7cfc00;
+}
+
+.task-get:hover {
+  background: linear-gradient(145deg, #3ce63c, #2e9e2e);
+  border-color: #e4ff7a;
+  box-shadow:
+    0 8px 0 #0b3b0b,
+    0 0 30px #adff2f;
+  transform: translateY(2px);
+}
+
+.task-get:active {
+  transform: translateY(8px);
+  box-shadow:
+    0 2px 0 #0b3b0b,
+    0 0 40px #00ff80;
+}
+
+/* Кнопка «Сдать» – опасный красный/оранжевый */
+.task-pass {
+  background: linear-gradient(145deg, #ff7e5f, #f44336);
+  color: #fff;
+  text-shadow: 0 2px 0 #7a1f1f;
+  border: 2px solid #ffb347;
+  box-shadow:
+    0 10px 0 #691c1c,
+    0 0 20px #ff4500;
+}
+
+.task-pass:hover {
+  background: linear-gradient(145deg, #ff9472, #ff5a4a);
+  border-color: #ffe070;
+  box-shadow:
+    0 8px 0 #691c1c,
+    0 0 30px #ff6347;
+  transform: translateY(2px);
+}
+
+.task-pass:active {
+  transform: translateY(8px);
+  box-shadow:
+    0 2px 0 #691c1c,
+    0 0 40px #ff3300;
+}
+
+/* Добавляем декоративные элементы – энергетические линии */
+.task::after {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  background: linear-gradient(45deg, cyan, magenta, gold, cyan);
+  border-radius: 32px;
+  z-index: -2;
+  filter: blur(12px);
+  opacity: 0.4;
+  transition: opacity 0.2s;
+}
+
+.task:hover::after {
+  opacity: 0.8;
+  filter: blur(16px);
+}
+
+/* Адаптив – мобилки в порядке */
+@media (max-width: 560px) {
+  .task {
+    grid-template-areas:
+      "content"
+      "exp"
+      "buttons";
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 20px;
+  }
+
+  .task-buttons {
+    justify-content: stretch;
+  }
+
+  .task-get,
+  .task-pass {
+    flex: 1;
+    text-align: center;
+  }
+
+  .task-title {
+    font-size: 1.5rem;
+  }
+}
+
+/* Анимация появления – эффект «дропа» */
+@keyframes taskAppear {
+  0% {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.task {
+  animation: taskAppear 0.3s cubic-bezier(0.2, 0.9, 0.3, 1.1);
+}
